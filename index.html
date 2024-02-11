@@ -26,15 +26,37 @@
         <div class="avatar">
             <img src="https://q1.qlogo.cn/g?b=qq&nk=1441937669&s=4">
         </div>
-        <nav class="nav">
-            <a href="https://qsz6.github.io/zy/">首页</a>
-            <a href="#info">资料</a>
-            <a href="#skills">技能</a>
-            <a href="#works">&nbsp;展示&nbsp;</a>
-            <a href="#story">经历</a>
-            <a href="#team">&nbsp;简介&nbsp;</a>
-        </nav>
-    </aside>
+		<style>
+    .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav a {
+        margin: 0 10px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .nav {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .nav a {
+            margin: 5px;
+        }
+    }
+</style>
+
+<nav class="nav">
+    <a href="https://qsz6.github.io/zy/">首页</a>
+    <a href="#info">资料</a>
+    <a href="#skills">技能</a>
+    <a href="#works">&nbsp;展示&nbsp;</a>
+    <a href="#story">经历</a>
+    <a href="#team">&nbsp;简介&nbsp;</a>
+</nav>
     </aside>
 <main>
     <section id="info">
