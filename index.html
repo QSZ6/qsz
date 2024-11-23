@@ -1,227 +1,325 @@
-<html lang="zh-cn">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="email=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="renderer" content="webkit">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>屈思政[简历]</title>
-    <link rel="stylesheet" href="static/css/typo.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/index.css">
-    <script>
-        function loading() {
-            document.getElementsByClassName('avatar')[0].style.display = 'block';
-            document.getElementsByClassName('loading')[0].style.display = 'none';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QSZ古诗文网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </script>
+
+        body {
+            font-family: "Microsoft YaHei", "SimSun", sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .poem-list {
+            display: block;
+            padding: 10px;
+            flex: 1;
+        }
+
+        .poem-item {
+            cursor: pointer;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .poem-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .poem-title {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .poem-author {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .dynasty {
+            margin-left: 10px;
+            color: #888;
+        }
+
+        .poem-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 1.1em;
+            line-height: 1.8;
+            white-space: pre-line;
+            color: #444;
+        }
+
+        .poem-item.expanded .poem-content {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #ff4444;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .expand-indicator {
+            float: right;
+            color: #888;
+            font-size: 0.9em;
+            padding: 4px 8px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .poem-item.expanded .expand-indicator::after {
+            content: '收起';
+        }
+
+        .poem-item:not(.expanded) .expand-indicator::after {
+            content: '展开';
+        }
+
+        .pagination {
+            text-align: center;
+            padding: 20px 0;
+            background: #fff;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: #357abd;
+        }
+
+        .page-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #pageInfo {
+            color: #666;
+            margin: 0 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #fff;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #666;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .page-btn {
+                padding: 6px 12px;
+            }
+
+            #pageInfo {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>QSZ古诗文网</h1>
+        </header>
+        <main id="poemList" class="poem-list">
+            <div class="loading">正在加载诗词...</div>
+        </main>
+        <div class="pagination" id="pagination">
+            <button class="page-btn" id="prevPage">上一页</button>
+            <span id="pageInfo">第 1 页 / 共 1 页</span>
+            <button class="page-btn" id="nextPage">下一页</button>
+        </div>
+        <footer class="footer">
+            <p>© 2024 QSZ古诗文网 - 传承中华文化精髓</p>
+            <p>Producer: Qu Sizheng</p>
+        </footer>
+    </div>
 
-    <header class="header"></header>
+    <!-- 先加载数据文件 -->
+    <script src="gushi.js"></script>
+    
+    <!-- 然后是主要逻辑 -->
+    <script>
+        let currentPage = 1;
+        const ITEMS_PER_PAGE = 10; // 每页显示10首诗
 
-    <article class="container">
-        <section class="side" id="side">
+        async function loadPoems() {
+            try {
+                const poemList = document.getElementById('poemList');
+                const prevPageBtn = document.getElementById('prevPage');
+                const nextPageBtn = document.getElementById('nextPage');
+                const pageInfo = document.getElementById('pageInfo');
+                
+                // 对诗词进行随机排序
+                const shuffledPoems = window.poems.sort(() => Math.random() - 0.5);
+                const totalPages = Math.ceil(shuffledPoems.length / ITEMS_PER_PAGE);
 
-            <!-- 左栏固定开关，记得及时删除这段代码 Start-->
-            <!-- 左侧固定开关，记得及时删除这段代码 End-->
-            <!-- 个人肖像 -->
-            <section class="me">
-                <section>
-                    <!-- 头像照片 -->
-                    <img src="https://q1.qlogo.cn/g?b=qq&amp;nk=1441937669&amp;s=4">
-                </section><br>
+                function updatePage() {
+                    poemList.innerHTML = '';
+                    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+                    const endIndex = startIndex + ITEMS_PER_PAGE;
+                    const currentPoems = shuffledPoems.slice(startIndex, endIndex);
 
-                <h1 class="name">屈思政</h1><br>
-                <h4 class="info-job">中国 | 内蒙古 | 呼伦贝尔</h4>
+                    currentPoems.forEach(poem => {
+                        const poemElement = document.createElement('div');
+                        poemElement.className = 'poem-item';
+                        
+                        const formattedContent = poem.content
+                            .replace(/。/g, '。\n')
+                            .replace(/！/g, '！\n')
+                            .replace(/？/g, '？\n')
+                            .replace(/；/g, '；\n');
+                        
+                        poemElement.innerHTML = `
+                            <div class="expand-indicator"></div>
+                            <div class="poem-title">${poem.title}</div>
+                            <div class="poem-author">
+                                ${poem.author}
+                                <span class="dynasty">${poem.dynasty}</span>
+                            </div>
+                            <div class="poem-content">${formattedContent}</div>
+                        `;
 
-            </section>
+                        poemElement.addEventListener('click', function(event) {
+                            // 如果点击的是展开/收起按钮，阻止事件冒泡
+                            if (event.target.classList.contains('expand-indicator')) {
+                                event.stopPropagation();
+                            }
+                            
+                            const expandedItems = document.querySelectorAll('.poem-item.expanded');
+                            expandedItems.forEach(item => {
+                                if (item !== this) {
+                                    item.classList.remove('expanded');
+                                }
+                            });
+                            this.classList.toggle('expanded');
+                        });
 
-            <!-- 基本信息 -->
-            <section class="profile info-unit">
-                <h2>
-                    <i class="fa fa-user" aria-hidden="true"></i>基本信息
-                </h2>
-                <hr>
-                <ul>
-                    <li>
-                        <label>个人信息</label>
-                        <span>屈思政 | 男 | 22岁</span>
-                    </li>
-                    <li>
-                        <label>十二生肖</label>
-                        <span>蛇</span>
-                    </li>
-                    <li>
-                        <label>十二星座</label>
-                        <span>水瓶座</span>
-                    </li>
-                </ul>
-            </section>
+                        poemList.appendChild(poemElement);
+                    });
 
-            <!-- 联系方式 -->
-            <section class="contact info-unit">
-                <h2>
-                    <i class="fa fa-phone" aria-hidden="true"></i>联系方式
-                </h2>
-                <hr>
-                <ul>
+                    // 更新分页信息
+                    pageInfo.textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
+                    prevPageBtn.disabled = currentPage === 1;
+                    nextPageBtn.disabled = currentPage === totalPages;
 
-                    <li>
-                        <label>联系邮箱</label>
-                        <a href="mailto:972560507@qq.com" target="_blank">972560507@qq.com</a>
-                    </li>
-                    <li>
-                        <label>个人主页</label>
-                        <a href="http://qsz6.github.io/zy/" target="_blank">http://qsz6.github.io/zy/</a>
-                    </li>
+                    // 滚动到页面顶部
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
 
-                </ul>
-            </section>
+                // 添加分页事件监听
+                prevPageBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        updatePage();
+                    }
+                });
 
-            <!-- 技能点 -->
-            <section class="skill info-unit">
-                <h2>
-                    <i class="fa fa-code" aria-hidden="true"></i>技能点
-                </h2>
-                <hr>
-                <ul>
-                    <li>
-                        <label>HTML</label>
-                        <progress value="69" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>CSS</label>
-                        <progress value="68" max="100"></progress>
-                    </li>
-                    <li>
-                        <label>JavaScript</label>
-                        <progress value="67" max="100"></progress>
-                    </li>
+                nextPageBtn.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        updatePage();
+                    }
+                });
 
+                // 初始加载第一页
+                updatePage();
 
-                    <li>
-                        <label>游戏水平</label>
-                        <progress value="66" max="100"></progress>
-                    </li>
-                </ul>
-            </section>
+            } catch (error) {
+                console.error('Error loading poems:', error);
+                document.getElementById('poemList').innerHTML = `
+                    <div class="error">
+                        <p>加载诗词失败，请稍后重试。</p>
+                        <p>错误信息：${error.message}</p>
+                    </div>
+                `;
+            }
+        }
 
-
-
-
-
-        </section>
-
-        <section class="main">
-
-            <!-- 教育经历 -->
-            <section class="edu info-unit">
-                <h2>自我介绍</h2>
-                <hr>
-                <ul>
-
-
-                    <p>
-                        &nbsp;&nbsp;作为一名热爱学习和探索计算机领域知识的专业人士，我充满活力和乐观向上，具备较强的团队合作精神。勇于接受挑战，善于适应新环境，积极主动并以提升自身工作表现为目标。擅长处理工作压力，注重细节，逻辑思维清晰，且秉持良好的职业道德。同时，我对王者荣耀等游戏有浓厚兴趣，希望将热情与专业结合，不断完善自我，追求卓越。
-
-                    </p>
-                    <br>
-
-
-                </ul>
-            </section>
-
-            <!-- 工作经历 -->
-            <section class="work info-unit">
-                <h2>个人经历</h2>
-                <hr>
-                <ul>
-                    <h3>
-                        <div class="col-m-8">
-
-                            <ul class="timeline">
-                                <li>2017.05：对网站感兴趣</li>
-                                <li>2019.11：十一届“挑战杯”课外学术科技作品竞赛 二等奖</li>
-                                <li>2021.01：拿下C1驾驶证</li>
-                                <li>2022.09：认识黄少，一飞冲天</li>
-                                <li>2024.03：毕设 | 图书管理系统 | 完成</li>
-                                <li>2024.04：论文 | 维普查重率:11.1% | 自写率：88.9%</li>
-                                <br>
-                            </ul>
-
-                        </div>
-                    </h3>
-                </ul>
-            </section>
-
-            <!-- 项目经验 -->
-            <section class="project info-unit">
-                <h2>个人作品 </h2>
-                <hr>
-                <ul>
-
-
-                    <ul class="info-content">
-
-
-                        <p>可在本人联系方式的个人主页,查看详细内容</p>
-                        <br>
-
-
-
-                    </ul>
-
-
-
-
-
-                </ul>
-            </section>
-
-            <!-- 自我评价 -->
-            <section class="work info-unit">
-                <h2>
-                    个性签名
-                </h2>
-                <hr>
-                <p>读书百遍&nbsp;&nbsp;而义自见</p>
-            </section>
-        </section>
-    </article>
-
-
-
-    <footer class="footer">
-        <p>
-            Copyright 2024 Qu Sizheng
-            .
-        </p>
-    </footer>
-
-    <!-- 侧栏 -->
-
-
-    <script src="static/js/index.js"></script>
-
-
-
-
-
-
-
-
-
-
-
+        document.addEventListener('DOMContentLoaded', loadPoems);
+    </script>
 </body>
 </html>
