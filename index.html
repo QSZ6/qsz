@@ -1,179 +1,158 @@
-﻿<html><head>
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <title>QSZ的个人简介</title>
     <meta name="theme-color" content="#ffc91d">
-
-    <link href="static/kico.css" rel="stylesheet" type="text/css">
-    <link href="static/moreduo.css" rel="stylesheet" type="text/css">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
+    <link rel="stylesheet" href="static/kico.css">
+    <link rel="stylesheet" href="static/moreduo.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <aside class="sidebar">
         <style>
-            .avatar {
-                width: 100px;
-                height: 100px;
-            }
-
-                .avatar img {
-                    width: 100%;
-                    height: 100%;
-                }
+            .avatar { width: 100px; height: 100px; }
+            .avatar img { width: 100%; height: 100%; border-radius: 50%; }
         </style>
         <div class="avatar">
             <img src="https://q1.qlogo.cn/g?b=qq&amp;nk=1441937669&amp;s=4">
         </div>
-		<style>
-    .nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .nav a {
-        margin: 0 10px;
-    }
+        <style>
+            .nav { display: flex; justify-content: center; align-items: center; }
+            .nav a { margin: 0 10px; text-decoration: none; color: #333; }
+            @media (max-width: 767px) {
+                .nav { flex-wrap: wrap; justify-content: flex-start; }
+                .nav a { margin: 5px; }
+            }
+        </style>
 
-    @media screen and (max-width: 767px) {
-        .nav {
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        .nav a {
-            margin: 5px;
-        }
-    }
-</style>
-
-<nav class="nav">
-    <a href="https://qsz6.github.io/zy/">首页</a>
-    
-    
-    <a href="#works">&nbsp;展示&nbsp;</a>
-    <a href="#story">经历</a>
-    <a href="#team">&nbsp;简介&nbsp;</a>
-</nav>
+        <nav class="nav">
+            <a href="https://qsz6.github.io/zy/">首页</a>
+            <a href="#works">展示</a>
+            <a href="#story">经历</a>
+            <a href="#team">简介</a>
+        </nav>
     </aside>
-<main>
-    <section id="info">
-        <div class="wrap">
-            <h2 class="title">个人资料</h2>
-            <div class="row">
-                <div class="col-l-4">
-                    <p>姓名：QSZ</p>
-                    <p>性别：男</p>
-                    <p>年龄：22</p>
-                </div>
-                <div class="col-l-4">
-                    <p>QQ：1441937669</p>
-                  <p>邮箱：qsz666@vip.qq.com<a href="qsz666@vip.qq.com">&nbsp;</a></p>
-                    <p>学历：本科&nbsp;</p>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-    
-    <section id="works">
-        <div class="wrap">
-            <h2 class="title">展示区域</h2>
-            <div class="row">
-                
-                
-                <div class="col-s-6">
-                    <div class="works-item">
-                        <img src="static/img/works/long1.jpg" bk-image="active">
-                        <p>龙年展示</p>
+
+    <main>
+        <section id="info">
+            <div class="wrap">
+                <h2 class="title">个人资料</h2>
+                <div class="row">
+                    <div class="col-l-4">
+                        <p>姓名：QSZ</p>
+                        <p>性别：男</p>
+                        <p id="age">年龄：22</p>
+                    </div>
+                    <div class="col-l-4">
+                        <p>QQ：1441937669</p>
+                        <p><a href="mailto:qsz666@vip.qq.com">qsz666@vip.qq.com</a></p>
+                        <p>学历：本科</p>
                     </div>
                 </div>
-                <div class="col-s-6">
-                    <div class="works-item">
-                        <img src="static/img/works/long2.jpg" bk-image="active">
-                        <p>龙年展示</p>
+            </div>
+        </section>
+
+        <section id="works">
+            <div class="wrap">
+                <h2 class="title">展示区域</h2>
+                <div class="row">
+                    <div class="col-s-6">
+                        <div class="works-item">
+                            <img src="static/img/works/long1.jpg" bk-image="active">
+                            <p>龙年展示</p>
+                        </div>
+                    </div>
+                    <div class="col-s-6">
+                        <div class="works-item">
+                            <img src="static/img/works/long2.jpg" bk-image="active">
+                            <p>龙年展示</p>
+                        </div>
+                    </div>
+                    <div class="col-s-6">
+                        <div class="works-item">
+                            <img src="static/img/works/hh.jpg" bk-image="active">
+                            <p>黄少绘画作品展示</p>
+                        </div>
+                    </div>
+                    <div class="col-s-6">
+                        <div class="works-item">
+                            <img src="static/img/works/hj.jpg" bk-image="active">
+                            <p>黄少信息展示</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-		       <div class="col-s-6">
-                    <div class="works-item">
-                        <img src="static/img/works/hh.jpg" bk-image="active">
-                        <p>黄少绘画作品展示</p>
+        <section id="story">
+            <div class="wrap">
+                <h2 class="title">传奇经历</h2>
+                <div class="row">
+                    <div class="col-m-8">
+                        <ul class="timeline">
+                            <li>2019.11 参与十一届"挑战杯"竞赛获省级二等奖</li>
+                            <li>2020.01 独立开发个性化浏览器插件，获得百名用户好评</li>
+                            <li>2021.08 基于Arduino完成智能家居原型设计</li>
+                            <li>2022.12 主导校园服务类小程序开发，服务师生千余人</li>
+                            <li>2022.09 加入创业团队，负责技术研发方向</li>
+                            <li>2023.06 完成Python自动化办公工具开发并开源</li>
+                            <li>2024.01 基于HTML5技术完成毕业设计网站开发</li>
+                            <li>2024.02 个人技术博客访问量突破十万次</li>
+                        </ul>
+                    </div>
+                    <div class="col-m-4 center-fixed">
+                        <img src="static/img/ps.png" bk-image="active">
                     </div>
                 </div>
-				    <div class="col-s-6">
-                    <div class="works-item">
-                        <img src="static/img/works/hj.jpg" bk-image="active">
-                        <p>黄少信息展示</p>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="wrap">
+                <h2 class="title">我的简介</h2>
+                <div class="row">
+                    <div class="col-m-6">
+                        <p>看图</p>
+                    </div>
+                    <div class="col-m-6 center">
+                        <img src="static/img/zhen.png" bk-image="active">
                     </div>
                 </div>
-                </div>
             </div>
-        
-    </section>
-    <section id="story">
-        <div class="wrap">
-            <h2 class="title">个人经历</h2>
-            <div class="row">
-                <div class="col-m-8">
-                    <ul class="timeline">
-                <!-- 学术研究 -->
-                <li>2019.11 参与十一届"挑战杯"竞赛获省级二等奖</li>
-                
-                
+        </section>
 
-                <!-- 技术实践 -->
-                <li>2020.01 独立开发个性化浏览器插件，获得百名用户好评</li>
-                <li>2021.08 基于Arduino完成智能家居原型设计</li>
-                <li>2022.12 主导校园服务类小程序开发，服务师生千余人</li>
+        <footer>
+            <p>Copyright © 2025 QSZ Rights Reserved.</p>
+        </footer>
+    </main>
 
-                <!-- 能力提升 -->
-                
-                <li>2022.09 加入创业团队，负责技术研发方向</li>
-                <li>2023.06 完成Python自动化办公工具开发并开源</li>
+    <script src="static/kico.js"></script>
+    <script src="static/moreduo.js"></script>
 
-                <!-- 创新实践 -->
-                <li>2024.01 基于HTML5技术完成毕业设计网站开发</li>
-                <li>2024.02 个人技术博客访问量突破十万次</li>
-                
+    <script>
+        // 动态计算年龄
+        function calculateAge(birthDate) {
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age -= 1;
+            }
+            return age;
+        }
 
-            </ul>
-        
-                </div>
-                <div class="col-m-4 center-fixed">
-                    <img src="static/img/ps.png" bk-image="active">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="content-d" id="team">
-        <div class="wrap">
-            <h2 class="title">我的简介</h2>
-            <div class="row">
-                <div class="col-m-6">
-                    
-                    
-                    
-<p></p>
-                </div>
-                <div class="col-m-6 center">
-                    <img src="static/img/zhen.png" bk-image="active">
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <p>天子</p>
-    </footer>
-</main>
+        document.addEventListener('DOMContentLoaded', () => {
+            const birthDate = new Date(2002, 0, 25); // 年月日
+            const age = calculateAge(birthDate);
+            document.getElementById('age').textContent = `年龄：${age}`;
+        });
+    </script>
 
-<script src="static/kico.js"></script>
-<script src="static/moreduo.js"></script>
-
-<style>
-.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
-</style>
-<div>
-</div>
-
-</body></html>
+    <style>
+        .copyrights { text-indent: -9999px; height: 0; line-height: 0; font-size: 0; overflow: hidden; }
+    </style>
+</body>
+</html>
